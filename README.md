@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HCDE 310-project
 
 This project is a mash-up of 3 APIs to create a data aggregate that can be 
@@ -14,3 +15,8 @@ WDFW Integrated Fish Distribution API https://geo.wa.gov/datasets/wdfw::statewid
 
 Additional assistance for this project can be accredited to https://www.w3schools.com/ and Microsoft Copilot to develop the code
 needed to make this project work.
+=======
+# 310-project
+
+# This is code for a site that provides data based on location for Washington State freshwater anglers
+>>>>>>> 16b891ca4d06cd18702ea25889ffffac062f1c0c
