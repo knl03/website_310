@@ -1,20 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <p>This is the search page</p><br>
-    <p>
-    <form action="{{url_for('results')}}" method= "post">
-        <div class ="form-group">
-        <label for="search">search</label><br>
-        <input type="text" name="place" id="place" required>
-        </div>
-        <p><input type="submit"></p>
-    </form>
-    </p>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <div class="container">
+        <div class="form-container">
+            <h2>This is the search page</h2><br>
+
+            <form action="{{url_for('results')}}" method= "post">
+
+                <div class ="form-group">
+                <label for="search">Enter USGS site code</label><br>
+
+                <input type="text" name="siteCode" id="siteCode" required><br>
+
+                <label for="lat1">Enter Latitude 1, 6 decimals/label><br>
+                <input type = 'number' name="coords[]" id="lat1" step = "0.000001" required><br>
+
+                <label for="lng1">Enter Longitude 1, 6 decimals</label><br>
+                <input type = 'number' name="coords[]" id="lng1" step = "0.000001" required><br>
+
+                <label for="lat2">Enter Latitude 2</label><br>
+                <input type = 'number' name="coords[]" id="lat2" step = "0.000001" required><br>
+
+                <label for="lng2">Enter Longitude 2</label><br>
+                <input type = 'number' name="coords[]" id="lng2" step = "0.000001" required><br>
+
+                </div>
+                <p><input type="submit"></p>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

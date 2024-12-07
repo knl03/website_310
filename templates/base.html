@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .responsive-img {
+        width: 100%;
+        height: auto;
+      }
+      .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+      }
+      .form-container {
+          width: 300px;
+          padding: 20px;
+          border: 1px solid #000000;
+          border-radius: 10px;
+          background-color: darkolivegreen;
+          color: white;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+          text-align: center;
+      }
+
+      .fit-image {
+          width: 100px;
+          height: auto;
+          text-align: center;
+      }
+      .containerF {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .collapsible {
+          background-color: darkgreen;
+          color: palegreen;
+          cursor: pointer;
+          padding: 10px;
+          width: 80%;
+          border: none;
+          text-align: center;
+          outline: 2px solid #000000;
+          font-size: 18px;
+          margin: 0 auto;
+          display: block;
+      }
+      .content {
+          display: none;
+          padding-left: 10px;
+      }
+      .containerW {
+          display: flex;
+          flex-wrap: wrap;
+      }
+      .itemW {
+          width: 33.33%;
+          padding: 10px;
+          box-sizing: border-box;
+          text-align: left;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+      }
+      .center-text {
+          text-align: center;
+      }
+      .itemX {
+          width: 50%;
+          padding: 10px;
+          box-sizing: border-box
+      }
+      .non-bold {
+          font-weight: normal;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <div class="center-text">
+        <h1>
+            Data Aggregate for Washington State Anglers
+        </h1>
+    </div>
+    <img src="{{ url_for('static', filename='images/Fish Banner.png') }}" alt="Fish Banner" class="responsive-img">
+  </header>
+  <main>
+
+
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer>
+      <div class="center-text">
+        Site codes can be located with the <a href="https://maps.waterdata.usgs.gov/mapper/index.html" target="blank">NWIS Mapper Tool</a><br>
+        Coordinates can be found on <a href="https://www.google.com/maps/@47.2237901,-121.0577581,8.04z?entry=ttu&g_ep=EgoyMDI0MTIwNC4wIKXMDSoASAFQAw%3D%3D" target="blank">Google Maps</a><br>
+      </div>
+      <div class="containerF">
+          <img src="{{ url_for('static', filename='images/WAflag.png') }}" alt="Wa flag" class="fit-image">
+      </div>
+
+      <div class="center-text">
+
+        Data sourced from USGS, NOAA and WDFW
+
+      </div>
+  </footer>
+</body>
+</html>
