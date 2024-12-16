@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # HCDE 310-project
 
 This project is a mash-up of 3 APIs to create a data aggregate that can be 
