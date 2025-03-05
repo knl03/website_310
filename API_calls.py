@@ -56,6 +56,7 @@ def print_usgs_data(data):
         printList.append(value['variable']['options']['option'][0]['value'])
     return printList
 
+print(print_usgs_data(get_usgs_data(12201700)))
 
 #Behavior: Completes a request to the noaa forecast API based on coordinates and collects forecasts for the next 3 days.
 #           Skips over nightly forecasts, only records daytime forecasts.
@@ -96,7 +97,7 @@ def get_noaa_data(lat=48.70216667, lng=-122.4824722):
         print(f"Failed to retrieve data: {e.reason}")
         return None
 
-
+print(get_noaa_data())
 
 #Behavior: this function queries the WDFW fish records to find all species that have been reported inside the queried zone. It also
 #           finds all the streams where each fish can be found.
@@ -141,4 +142,4 @@ def get_species(lat1 = 48.815367, lng1= -122.607774, lat2 = 48.778015, lng2 = -1
         print(f"Failed to retrieve data: {e.reason}")
         return None
 
-#get_species()
+print(get_species())

@@ -2,54 +2,54 @@
 
 {% block content %}
 
-            <div class="center-text">
-                <h2>
-                    Results for site code: {{ siteCode }}<br>
-                    <span class="non-bold">Site coordinates: {{ siteLocation }}</span>
-                </h2>
-            </div>
+    <div class="center-text">
+        <h2>
+            Results for site code: {{ siteCode }}<br>
+            <span class="non-bold">Site coordinates: {{ siteLocation }}</span>
+        </h2>
+    </div>
 
-            <div class="containerW">
-                {% for data in siteData %}
-                    <div class="itemW">
-                        {{ data }}
+    <div class="containerW">
+        {% for data in siteData %}
+            <div class="itemW">
+                {{ data }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="center-text">
+        <h2>3-day forecast:</h2>
+    </div>
+
+        <div class="containerW">
+            {% for key, value in weather.items() %}
+                <div class="itemX"><b>{{ key }}</b>:<br>{{ value }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="center-text">
+
+                <h2>Fish species recorded in the area:</h2>
+                {% for fish, locationList in fish.items() %}
+                    <button class="collapsible">{{fish}}</button>
+                    <div class="content">
+                        <ul>
+                        {% for location in locationList %}
+                            <li>{{ location }}</li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 {% endfor %}
-            </div>
-            <div class="center-text">
-                <h2>3-day forecast:</h2>
-            </div>
 
-                <div class="containerW">
-                    {% for key, value in weather.items() %}
-                        <div class="itemX"><b>{{ key }}</b>:<br>{{ value }}</div>
-                    {% endfor %}
-                </div>
+                <script>
+                    document.querySelectorAll('.collapsible').forEach(button => {
+                        button.addEventListener('click', function() {
+                            let content = this.nextElementSibling;
+                            content.style.display = content.style.display === "block" ? "none" : "block";
+                        });
+                    });
+                </script>
 
-                <div class="center-text">
-
-                        <h2>Fish species recorded in the area:</h2>
-                        {% for fish, locationList in fish.items() %}
-                            <button class="collapsible">{{fish}}</button>
-                            <div class="content">
-                                <ul>
-                                {% for location in locationList %}
-                                    <li>{{ location }}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        {% endfor %}
-
-                        <script>
-                            document.querySelectorAll('.collapsible').forEach(button => {
-                                button.addEventListener('click', function() {
-                                    let content = this.nextElementSibling;
-                                    content.style.display = content.style.display === "block" ? "none" : "block";
-                                });
-                            });
-                        </script>
-
-                </div>
+        </div>
 
 {% endblock %}
 
