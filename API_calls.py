@@ -11,7 +11,7 @@ import datetime
 
 def get_usgs_data(site_code = 12201700, delta = 1):
     baseurl = "https://waterservices.usgs.gov/nwis/dv/"
-    #print(str(datetime.date.today() - datetime.timedelta(1)))
+
     parameters = {
         'format': 'json',
         'sites': site_code,
@@ -22,19 +22,19 @@ def get_usgs_data(site_code = 12201700, delta = 1):
     paramstr = urllib.parse.urlencode(parameters)
 
     request = baseurl + "?" + paramstr
-    #print(request)
+
     try:
         with urllib.request.urlopen(request) as response:
             data = json.loads(response.read().decode("utf-8"))
 
 
     except urllib.error.URLError as e:
-        #print(f"Failed to retrieve data: {e.reason}")
+
         return None
     if len(data['value']['timeSeries']) == 0:
         data = get_usgs_data(site_code, delta + 1)
     return data
-#print(get_usgs_data(12213100))
+
 
 
 #Behavior: formats the data from the usgs data call into a list that can later be processed into html
@@ -56,6 +56,7 @@ def print_usgs_data(data):
         printList.append(value['variable']['options']['option'][0]['value'])
     return printList
 
+print(print_usgs_data(get_usgs_data()))
 
 #Behavior: Completes a request to the noaa forecast API based on coordinates and collects forecasts for the next 3 days.
 #           Skips over nightly forecasts, only records daytime forecasts.
@@ -96,6 +97,7 @@ def get_noaa_data(lat=48.70216667, lng=-122.4824722):
         print(f"Failed to retrieve data: {e.reason}")
         return None
 
+print(get_noaa_data())
 
 
 #Behavior: this function queries the WDFW fish records to find all species that have been reported inside the queried zone. It also
@@ -141,4 +143,4 @@ def get_species(lat1 = 48.815367, lng1= -122.607774, lat2 = 48.778015, lng2 = -1
         print(f"Failed to retrieve data: {e.reason}")
         return None
 
-#get_species()
+print(get_species())
