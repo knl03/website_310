@@ -1,31 +1,37 @@
+{% extends 'base.html' %}
 
+{% block content %}
+    <div class="container">
+    <div class="form-container">
+        <h2>How to use this search tool:</h2>
+        <h3>Find a USGS site code in WA State, using the link below, based on where you are
+            interested in fishing. Then use Google Maps to find two coordinate pairs that form
+            an area containing the location of the site.</h3>
 
-<div class="container">
-<div class="form-container">
-    <h2>This is the search page</h2><br>
+        <form action="{{url_for('results')}}" method= "post">
 
-    <form action="{{url_for('results')}}" method= "post">
+            <div class ="form-group">
+            <label for="siteCode">Enter USGS site code</label><br>
 
-        <div class ="form-group">
-        <label for="siteCode">Enter USGS site code</label><br>
+            <input type="text" name="siteCode" id="siteCode" required><br>
 
-        <input type="text" name="siteCode" id="siteCode" required><br>
+                <label for="lat1">Enter Latitude 1, 6 decimals</label><br>
+            <input type = 'number' name="coords[]" id="lat1" step = "any" required><br>
 
-            <label for="lat1">Enter Latitude 1, 6 decimals</label><br>
-        <input type = 'number' name="coords[]" id="lat1" step = "0.000001" required><br>
+            <label for="lng1">Enter Longitude 1, 6 decimals</label><br>
+            <input type = 'number' name="coords[]" id="lng1" step = "any" required><br>
 
-        <label for="lng1">Enter Longitude 1, 6 decimals</label><br>
-        <input type = 'number' name="coords[]" id="lng1" step = "0.000001" required><br>
+            <label for="lat2">Enter Latitude 2</label><br>
+            <input type = 'number' name="coords[]" id="lat2" step = "any" required><br>
 
-        <label for="lat2">Enter Latitude 2</label><br>
-        <input type = 'number' name="coords[]" id="lat2" step = "0.000001" required><br>
+            <label for="lng2">Enter Longitude 2</label><br>
+            <input type = 'number' name="coords[]" id="lng2" step = "any" required><br>
 
-        <label for="lng2">Enter Longitude 2</label><br>
-        <input type = 'number' name="coords[]" id="lng2" step = "0.000001" required><br>
+            </div>
+            <p><input type="submit"></p>
+        </form>
 
-        </div>
-        <p><input type="submit"></p>
-    </form>
+    </div>
+    </div>
 
-</div>
-</div>
+{% endblock %}
